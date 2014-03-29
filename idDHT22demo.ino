@@ -12,10 +12,6 @@ idDHT22 DHT22(idDHT22pin, dht22_wrapper);
 
 void setup()
 {
-    pinMode(D7, OUTPUT);
-    digitalWrite(D7, LOW);
-    
-    
 	Serial.begin(9600);
 	while(!Serial.available()) {
 	    Serial.println("hit a key");
