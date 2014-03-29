@@ -1,4 +1,4 @@
 idDHT22Spark
 ============
 
-idDHT22 DHT222 library for Spark
+Interrupt driven, non blocking DHT222 library for Spark
