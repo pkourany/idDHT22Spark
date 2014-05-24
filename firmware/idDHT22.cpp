@@ -1,6 +1,6 @@
 /********************************************************************/
 /*
-FILE: idDHT22.cpp
+FILE: dht22-nonblocking.cpp
 VERSION: 0.1
 PURPOSE: Interrupt driven Lib for DHT11 with Arduino.
 LICENCE: GPL v3 (http://www.gnu.org/licenses/gpl.html)

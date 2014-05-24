@@ -1,5 +1,5 @@
 // This #include statement was automatically added by the Spark IDE.
-#include "idDHT22.h"
+#include "idDHT22/idDHT22.h"
 
 
 // declaration for DHT11 handler
