@@ -113,8 +113,8 @@ void idDHT22::isrCallback() {
 				detachInterrupt(_sigPin);
 				_status = IDDHTLIB_ERROR_DELTA;
 				_state = STOPPED;
-			} else if(60 < delta && delta < 155) { //valid in timing
-				if(delta > 90) //is a one
+			} else if(60 < delta && delta < 145) { //valid in timing
+				if(delta > 100) //is a one
 					_bits[_idx] |= (1 << _cnt);
 				if (_cnt == 0) { // we have fullfilled the byte, go to next
 						_cnt = 7; // restart at MSB
