@@ -128,16 +128,6 @@ void idDHT22::isrCallback() {
 								* 0.1;
 								uint8_t sum = _bits[0] + _bits[1] + _bits[2] + _bits[3];
 							if (_bits[4] != sum) {
-/*							    Serial.print(_bits[0]);
-							    Serial.print(",");
-							    Serial.print(_bits[1]);
-							    Serial.print(",");
-							    Serial.print(_bits[2]);
-							    Serial.print(",");
-							    Serial.print(_bits[3]);
-							    Serial.print(",");
-							    Serial.println(_bits[4]);
-*/
 								_status = IDDHTLIB_ERROR_CHECKSUM;
 								_state = STOPPED;
 							} else {
