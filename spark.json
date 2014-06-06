@@ -1,7 +1,7 @@
 {
 	"name":	"idDHT22",
 	"author": "Paul Kourany <pkourany@gmail.com>",
-	"version": "0.0.1",
+	"version": "0.0.2",
 	"license": "GPL v3 (http://www.gnu.org/licenses/gpl.html)",
 	"description": "Interrupt driven, non blocking DHT22 library for Spark"
 }
