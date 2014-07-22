@@ -56,6 +56,7 @@ class idDHT22
 {
 public:
 	idDHT22(int sigPin, void (*isrCallback_wrapper)());
+	idDHT22(bool _dht11, int sigPin, void (*isrCallback_wrapper)());
     void init(int sigPin, void (*isrCallback_wrapper)());
 	void isrCallback();
 	int acquire();
@@ -84,5 +85,6 @@ private:
 	unsigned long _lastreadtime;
 	volatile float _hum;
 	volatile float _temp;
+	bool dht11;
 };
 

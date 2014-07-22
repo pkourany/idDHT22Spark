@@ -27,7 +27,13 @@ uint16_t word(uint8_t high, uint8_t low) {
 }
 
 
+idDHT22::idDHT22(bool _dht11, int sigPin, void (*callback_wrapper)()) {
+	dht11 = _dht11;
+	init(sigPin, callback_wrapper);
+}
+
 idDHT22::idDHT22(int sigPin, void (*callback_wrapper)()) {
+	dht11 = false;
 	init(sigPin, callback_wrapper);
 }
 
@@ -48,7 +54,7 @@ int idDHT22::acquire() {
 		_state = RESPONSE;
 
 		//Empty buffer and variables
-		for (int i=0; i< 6; i++)
+		for (int i=0; i< (dht11 ? 5 : 6); i++)
 			_bits[i] = 0;
 		_cnt = 7;
 		_idx = 0;
@@ -113,20 +119,20 @@ void idDHT22::isrCallback() {
 				detachInterrupt(_sigPin);
 				_status = IDDHTLIB_ERROR_DELTA;
 				_state = STOPPED;
-			} else if(60 < delta && delta < 145) { //valid in timing
-				if(delta > 100) //is a one
+			} else if(60 < delta && delta < (dht11 ? 155 : 145)) { //valid in timing
+				if(delta > (dht11 ? 90 : 100)) //is a one
 					_bits[_idx] |= (1 << _cnt);
 				if (_cnt == 0) { // we have fullfilled the byte, go to next
 						_cnt = 7; // restart at MSB
 						if(_idx++ == 4) { // go to next byte, if we have got 5 bytes stop.
 							detachInterrupt(_sigPin);
 							// WRITE TO RIGHT VARS
-							_hum = word(_bits[0], _bits[1]) * 0.1;
-							_temp = (_bits[2] & 0x80 ? 
+							_hum = dht11 ? _bits[0] : (word(_bits[0], _bits[1]) * 0.1);
+							_temp = dht11 ? _bits[2] : ((_bits[2] & 0x80 ? 
 								-word(_bits[2] & 0x7F, _bits[3]) :
 								word(_bits[2], _bits[3]))
-								* 0.1;
-								uint8_t sum = _bits[0] + _bits[1] + _bits[2] + _bits[3];
+								* 0.1);
+								uint8_t sum = dht11 ? (_bits[0] + _bits[2]) : (_bits[0] + _bits[1] + _bits[2] + _bits[3]);
 							if (_bits[4] != sum) {
 								_status = IDDHTLIB_ERROR_CHECKSUM;
 								_state = STOPPED;
