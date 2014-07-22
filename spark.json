@@ -3,5 +3,5 @@
 	"author": "Paul Kourany <pkourany@gmail.com>",
 	"version": "0.0.2",
 	"license": "GPL v3 (http://www.gnu.org/licenses/gpl.html)",
-	"description": "Interrupt driven, non blocking DHT22 library for Spark"
+	"description": "Interrupt driven, non blocking DHT22/DHT11 library for Spark"
 }

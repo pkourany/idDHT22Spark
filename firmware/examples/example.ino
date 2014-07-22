@@ -8,7 +8,7 @@ void dht22_wrapper(); // must be declared before the lib initialization
 
 // DHT instantiate
 idDHT22 DHT22(idDHT22pin, dht22_wrapper);
-
+// idDHT22 DHT11(true, idDHT22pin, dht22_wrapper); for the DHT11 sensor
 
 void setup()
 {
