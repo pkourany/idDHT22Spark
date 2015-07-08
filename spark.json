@@ -1,7 +1,7 @@
 {
 	"name":	"idDHT22",
 	"author": "Paul Kourany <pkourany@gmail.com>",
-	"version": "0.0.2.1",
+	"version": "0.0.3",
 	"license": "GPL v3 (http://www.gnu.org/licenses/gpl.html)",
 	"description": "This library is not reliable and has been deprecated!
 	Please use the PIETTETCH_DHT libray instead"
